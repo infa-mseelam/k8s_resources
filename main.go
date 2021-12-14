@@ -103,10 +103,10 @@ func main() {
 		wg.Wait()
 		regionClusterMap[r] = clustersMap
 
-		writeJson("clusters.json", env, r, clustersMap)
+		//writeJson("clusters.json", env, r, clustersMap)
 
 	}
-	fmt.Println("ns map:------", getJsonStr(nsMap), "------")
+	//fmt.Println("ns map:------", getJsonStr(nsMap), "------")
 	//fmt.Println(getJsonStr(regionClusterMap))
 }
 
@@ -177,10 +177,10 @@ func getClustersData(name, env, region string, svc *eks.EKS) (*types.ClusterReso
 	//for _, n := range resources.Namespaces {
 	pods, err := clientSet.AppsV1().Deployments("ct-operator").List(context.Background(), metav1.ListOptions{})
 	if err != nil {
-		log.Errorf("Error getting pods: %v", err)
+		log.Errorf("Error getting deplyments: %v", err)
 		return resources, nil
 	}
-	log.Printf("There are %d deployments associated with namespace %s", len(pods.Items), "ct-operator")
+	fmt.Println("There are %d deployments associated with namespace %s", len(pods.Items), "ct-operator")
 	//podsArr := make([]string, 0)
 	//for _, p := range pods.Items {
 	//	podsArr = append(podsArr, p.Name)
