@@ -97,7 +97,7 @@ func main() {
 		wg := sync.WaitGroup{}
 		for _, c := range c {
 			wg.Add(1)
-			goRoutineForClusterData(*c, env, r, clusterSvc, clustersMap, &wg)
+			go goRoutineForClusterData(*c, env, r, clusterSvc, clustersMap, &wg)
 		}
 
 		wg.Wait()
