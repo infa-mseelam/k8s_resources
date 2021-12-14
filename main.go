@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -174,7 +175,7 @@ func getClustersData(name, env, region string, svc *eks.EKS) (*types.ClusterReso
 	resources.Events = make(map[string][]string)
 
 	//for _, n := range resources.Namespaces {
-	pods, err := clientSet.AppsV1().Deployments("ct-operator").List(metav1.ListOptions{})
+	pods, err := clientSet.AppsV1().Deployments("ct-operator").List(context.Background(), metav1.ListOptions{})
 	if err != nil {
 		log.Errorf("Error getting pods: %v", err)
 		return resources, nil
