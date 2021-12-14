@@ -180,7 +180,7 @@ func getClustersData(name, env, region string, svc *eks.EKS) (*types.ClusterReso
 		log.Errorf("Error getting deplyments: %v", err)
 		return resources, nil
 	}
-	fmt.Println("There are %d deployments associated with namespace %s", len(pods.Items), "ct-operator")
+	fmt.Printf("-------There are %d deployments associated with namespace %s cluster %s\n", len(pods.Items), "ct-operator", name)
 	//podsArr := make([]string, 0)
 	//for _, p := range pods.Items {
 	//	podsArr = append(podsArr, p.Name)
